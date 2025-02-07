@@ -2,7 +2,7 @@
 
 ## Problem Description
 <p align="center">
-    <!--img src="https://github.com/Romilagarwal/LLM-project/blob/main/image/problem.jpg" width=200 -->
+    <!--img src="https://github.com/Romilagarwal/heart-failure-prediction/blob/main/img/kenny-eliason-MEbT27ZrtdE-unsplash.jpg" width=200 -->
    <img src=" https://github.com/Romilagarwal/heart-failure-prediction/blob/main/img/kenny-eliason-MEbT27ZrtdE-unsplash.jpg"width=200px>
 </p>
 <p align="center">
