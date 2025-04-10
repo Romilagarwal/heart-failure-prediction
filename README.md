@@ -1,116 +1,130 @@
-# Heart-failure-prediction
+# 🫀 Heart Failure Prediction
 
-## Problem Description
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python](https://img.shields.io/badge/Python-3.7+-blue?logo=python&logoColor=white)](https://www.python.org/)
+[![Streamlit](https://img.shields.io/badge/Streamlit-App-FF4B4B?logo=streamlit&logoColor=white)](https://heart-vs.streamlit.app/)
+[![Docker](https://img.shields.io/badge/Docker-Available-2496ED?logo=docker&logoColor=white)](https://www.docker.com/)
+[![XGBoost](https://img.shields.io/badge/XGBoost-Model-026F00?logo=xgboost&logoColor=white)](https://xgboost.readthedocs.io/)
+[![Flask](https://img.shields.io/badge/Flask-API-000000?logo=flask&logoColor=white)](https://flask.palletsprojects.com/)
+
+> **Live Demo**: [Streamlit Cloud App](https://heart-vs.streamlit.app/) | **Repository**: [GitHub](https://github.com/Romilagarwal/heart-failure-prediction)
+
+## 📊 Project Overview
+
+Cardiovascular diseases remain the **#1 cause of death globally**, claiming an estimated 17.9 million lives each year. Early detection and management are critical for people at high risk.
+
+This machine learning system predicts heart disease risk based on clinical parameters, helping healthcare professionals identify at-risk patients earlier and potentially save lives through timely intervention.
+
 <p align="center">
-    <!--img src="https://github.com/Romilagarwal/LLM-project/blob/main/image/problem.jpg" width=200 -->
-   <img src=" https://github.com/Romilagarwal/heart-failure-prediction/blob/main/img/kenny-eliason-MEbT27ZrtdE-unsplash.jpg"width=200px>
-</p>
-<p align="center">
-   <em>Image credits: <a href="https://unsplash.com/@neonbrand">Kenny Eliason on Unsplash</a></em>
+  <img src="https://github.com/Romilagarwal/heart-failure-prediction/blob/main/img/kenny-eliason-MEbT27ZrtdE-unsplash.jpg" width=300px alt="Heart Disease Visualization">
+  <br>
+  <i>Image: Kenny Eliason (Unsplash)</i>
 </p>
 
-> Cardiovascular diseases (CVD) are one of the leading cause of deaths worldwide. By examining the common risk factors, such as high blood cholestrol, chest pains, age risks and other factors featured in this dataset, a person's risk of having CVD could be detected earlier, thus reducing the number of deaths caused by CVD.
+## ✨ Key Features
 
-> Using a Machine Learning approach, this project's goal is to help researchers in identifying the importance and correlations of each of the risk factors mentioned above using existing CVD medical records. A Machine Learning classification model trained on this dataset could be used to predict if a new patient is potentially at risk of having heart disease.
+- **High-accuracy prediction**: XGBoost classifier with fine-tuned parameters
+- **Multiple deployment options**: Web application, API, and containerized solution
+- **Interactive interface**: User-friendly Streamlit dashboard for instant predictions
+- **RESTful API**: Flask backend for seamless integration with other systems
+- **Docker support**: Ready for deployment in any environment
+- **Cloud-deployed**: Accessible anywhere via Streamlit Cloud
 
-## Dataset
-* [Kaggle Heart Failure Prediction Dataset](https://www.kaggle.com/datasets/fedesoriano/heart-failure-prediction/)
+## 📈 Dataset & Analysis
 
-## Dependency and environment management
-The following steps are for reproducing the results of this repo on your local workstation.
+The model is trained on the [Heart Failure Prediction Dataset](https://www.kaggle.com/datasets/fedesoriano/heart-failure-prediction/) from Kaggle, containing key cardiovascular health indicators:
 
-### Reproducing this repo
-* Create a new folder called `heart_failure_prediction` on your local workstation.
-* In command prompt/terminal, navigate to this new folder. Then clone this repo to this new folder using `git clone https://github.com/Romilagarwal/heart-failure-prediction.git`.
-* Alternatively you could use these options to clone this repo.
-    * VSCode or
-    * Github Desktop
-* Once you have cloned this repo, create the virtual environment as in subsequent steps.
+- Demographic details (age, sex)
+- Clinical parameters (blood pressure, cholesterol levels)
+- Symptoms (chest pain type, exercise-induced angina) 
+- Test results (resting ECG, max heart rate, ST depression)
 
-### [Optional] Install pip
-* Usually pip is included if you have installed python. To check this, execute `pip --version` in command prompt/terminal. If you could see a version, pip is installed.
-* If not, refer this installation guide: [Official pip installation guidelines](https://pip.pypa.io/en/stable/installation/).
+Our extensive [exploratory data analysis](https://github.com/Romilagarwal/heart-failure-prediction/blob/main/notebook/part_1_preprocessing.ipynb) reveals critical patterns between these variables and heart disease risk.
 
-### [Optional] Install pipenv
-* `pip install pipenv`
+## 🧠 Model Development
 
-### Create Virtual Environment using Pipenv
-* If you have cloned this repo, `Pipfile` and `Pipfile.lock` should already be available in `heart_failure_prediction` and you can skip the following step.
-* If not, navigate to `heart_failure_prediction` in your command prompt/terminal:
-    * Execute `pipenv install numpy scikit-learn seaborn jupyter notebook xgboost streamlit flask requests gunicorn`.
-    * If it's successful, you should see both `Pipfile` and `Pipfile.lock` inside this folder.
+The project evaluates multiple classification algorithms:
+- Logistic Regression
+- Decision Tree Classifier
+- Random Forest Classifier
+- XGBoost Classifier
 
-### Activate virtual env
-* To activate the pipenv environment defined in `Pipfile` and `Pipfile.lock`, in command prompt/terminal:
-    * Navigate to `heart_failure_prediction`.
-    * Run `pipenv shell`.
-* You can execute the following after `pipenv shell` to:
-    * Open Jupyter Notebook: `jupyter notebook`.
-    * Run `training.py` script to recreate the model: `python training.py`.
-    * Start the heart prediction Streamlit app: see [Run Heart Prediction app on Streamlit locally](#run-heart-prediction-app-on-streamlit-locally).
-    * Serve the heart prediction Flask API call: see [Serve app using Flask](#serve-app-using-flask).
-    * Run the heart prediction Docker container: see [Containerization](#containerization).
+After rigorous comparison using confusion matrices and AUC scoring, **XGBoost** emerged as the top performer. The [complete modeling process](https://github.com/Romilagarwal/heart-failure-prediction/blob/main/notebook/part_2_modeling.ipynb) includes feature importance analysis and hyperparameter tuning.
 
-## EDA
-* A detailed EDA on the dataset is provided in Jupyter Notebook [part_1_preprocessing.ipynb]( https://github.com/Romilagarwal/heart-failure-prediction/blob/main/notebook/part_1_preprocessing.ipynb).
+## 🚀 Deployment Options
 
-## Model training
-* The best classifier model is picked by evaluating `LogisticRegression`, `DecisionTreeClassifier`, `RandomForestClassifier` and `XGBClassifier` models.
-* Evaluation metrics: Confusion Matrix and AUC Scoring.
-* The final model is a finetuned `XGBClassifier`.
-* Full explanation with visualization are found in Jupyter Notebook [part_2_modeling.ipynb](https://github.com/Romilagarwal/heart-failure-prediction/blob/main/notebook/part_2_modeling.ipynb).
-
-## Exporting notebook to script
-* The data cleaning, feature engineering, training and finetuning the final model are consolidated into script [training.py](https://github.com/Romilagarwal/heart-failure-prediction/blob/main/training.py).
-
-## Model deployment
-* Model is deployed with multiple options to allow running on local workstation, via a container, or internet:
-    * Flask: able to serve directly (see [here](#serve-app-using-flask)), or via Docker (refer [Containerization](#containerization)).
-    * Streamlit: runs locally (see [here](#run-heart-prediction-app-on-streamlit-locally)) and on Streamlit Cloud (URL link is provided at [Cloud Deployment](#cloud-deployment)).
-* **Note**: Use any options as you wish. The **best option** would be access it online at [https://heart-vs.streamlit.app/](https://heart-vs.streamlit.app/).
-
-### Serve app using Flask
-* To serve the Flask prediction app:
-    * In command prompt/terminal, navigate to `heart_failure_prediction` folder.
-    * Execute `python predict_flask.py`.
-    * If you see the message `* Serving Flask app 'heart_disease_app'`, the Flask app is ready for testing predictions.
-* To try out predictions, execute `predict_flask_test.py`. You should see something like this:
+### 1️⃣ Streamlit Web App
 ```bash
-{'hasHeartDisease': True, 'hasHeartDisease_probability': 0.7287337183952332}
+streamlit run heart_disease_prediction.py
+```
+Access a user-friendly interface to input patient data and receive instant predictions.
+
+### 2️⃣ Flask API
+```bash
+python predict_flask.py
+```
+For programmatic access or integration with existing healthcare systems.
+
+### 3️⃣ Docker Container
+```bash
+docker build -t heart-prediction-app .
+docker run -it -p 9696:9696 --rm --name heart_app heart-prediction-app:latest
+```
+Deploy anywhere with consistent environment and dependencies.
+
+## 🛠️ Setup & Installation
+
+### Prerequisites
+- Python 3.7+
+- pip package manager
+
+### Quick Start
+```bash
+# Clone repository
+git clone https://github.com/Romilagarwal/heart-failure-prediction.git
+cd heart-failure-prediction
+
+# Set up virtual environment
+pip install pipenv
+pipenv install
+pipenv shell
+
+# Run the app
+streamlit run heart_disease_prediction.py
+```
+
+### Testing the API
+```bash
+python predict_flask_test.py
+```
+
+Example output:
+```
+{'hasHeartDisease': True, 'hasHeartDisease_probability': 0.73}
 Potentially at risk of heart disease. Follow-up examination recommended.
 ```
-* To stop the Flask app, press CTRL+C in command prompt/terminal.
 
-### Run Heart Prediction app on Streamlit locally
-* In command prompt/terminal: `streamlit run heart_disease_prediction.py`.
-* It should redirect you to a localhost page containing the Streamlit app automatically.
+## 📚 Additional Resources
 
-## Containerization
-* The Flask app is also containerized using Docker.
-* **Prerequisites**:
-    * Install Docker, see [Docker Installation](https://docs.docker.com/engine/install/).
-    * Make sure Docker service is up and running in local workstation.
-* In command prompt/terminal, run `docker build -t heart-prediction-app .`
-* Check that Docker image is created successfully:
-    * `docker images`.
-    * You should see `heart-prediction-app` in the list of Docker Repositories.
-* Start a Docker container with the built image: `docker run -it -p 9696:9696 --rm --name heart_app heart-prediction-app:latest`. To check if the container is started:
-    * In a new command prompt/terminal, execute `docker ps`.
-    * You should see a running container with image `heart-prediction-app:latest` and name `heart_app`.
-* To test the served Flask app, you can use the Python script `predict_flask_test.py`. Steps:
-    * Run `docker exec -it heart_app bash`. This opens a bash terminal inside the running container.
-    * Run `python predict_flask_test.py`.
-    * You should see:
-    ```bash
-    {'hasHeartDisease': True, 'hasHeartDisease_probability': 0.7287337183952332}
-    Potentially at risk of heart disease. Follow-up examination recommended.
-    ```
-    * Type `exit` to quite the bash terminal.
-* To stop the running Docker container `heart_app`, execute `docker stop heart_app`.
+- [Model training script](https://github.com/Romilagarwal/heart-failure-prediction/blob/main/training.py)
+- [Docker installation guide](https://docs.docker.com/engine/install/)
+- [Streamlit Cloud deployment](https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app)
 
-## Cloud Deployment
-* This prediction app is deployed to Streamlit Cloud, here's the url to try it: [https://heart-vs.streamlit.app/](https://heart-vs.streamlit.app/).
-* The following steps are for those who are interested to replicate deployment to Streamlit Cloud:
-    * Sign in to [Streamlit Cloud](https://streamlit.io/cloud) with Github account.
-    * Follow the [instructions here](https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app) to create a Streamlit app by specifying the Github repo, Streamlit app (for this repo, use [`heart_disease_prediction.py`](https://github.com/Romilagarwal/heart-failure-prediction/blob/main/heart_disease_prediction.py))  and provide a file for environment setup ([Pipfile](https://github.com/viviensiu/heart-failure-prediction/blob/main/Pipfile) was used here).
+## ⚠️ Disclaimer
+
+This tool is designed for **screening purposes only** and should not replace professional medical advice. Always consult healthcare providers for proper diagnosis.
+
+## 🤝 Contributing
+
+Contributions to improve the model accuracy, user interface, or add new features are welcome. Please feel free to submit a pull request.
+
+## 📄 License
+
+This project is available under the MIT License.
+
+---
+
+<p align="center">
+  <i>Building healthier futures through machine learning and predictive analytics.</i>
+</p>
 
